@@ -1,0 +1,32 @@
+Básico de Branch e Merge
+Vamos ver um exemplo simples de uso de branch e merge com um fluxo de trabalho que você pode usar no mundo real. Você seguirá esses passos:
+
+Trabalhar em um web site.
+Criar um branch para uma nova história em que está trabalhando.
+Trabalhar nesse branch.
+Nesse etapa, você receberá um telefonema informando que outro problema crítico existe e precisa de correção. Você fará o seguinte:
+
+Voltar ao seu branch de produção.
+Criar um branch para adicionar a correção.
+Depois de testado, fazer o merge do branch da correção, e enviar para produção.
+Retornar à sua história anterior e continuar trabalhando.
+Branch Básico
+Primeiro, digamos que você esteja trabalhando no seu projeto e já tem alguns commits 
+Você decidiu que irá trabalhar na tarefa (issue) #53 do gerenciador de bugs ou tarefas que sua empresa usa. Para deixar claro, Git não é amarrado a nenhum gerenciador de tarefas em particular; mas já que a tarefa #53 tem um foco diferente, você criará um branch novo para trabalhar nele. Para criar um branch e mudar para ele ao mesmo tempo, você pode executar o comando git checkout
+Você trabalha no seu web site e faz alguns commits. Ao fazer isso o branch iss53 avançará, pois você fez o checkout dele
+Nesse momento você recebe uma ligação dizendo que existe um problema com o web site e você deve resolvê-lo imediatamente. Com Git, você não precisa fazer o deploy de sua correção junto com as modificações que você fez no iss53, e você não precisa se esforçar muito para reverter essas modificações antes que você possa aplicar sua correção em produção. Tudo que você tem a fazer é voltar ao seu branch master.
+
+No entanto, antes de fazer isso, note que seu diretório de trabalho ou área de seleção tem modificações que não entraram em commits e que estão gerando conflitos com o branch que você está fazendo o checkout, Git não deixará você mudar de branch. É melhor ter uma área de trabalho limpa quando mudar de branch. Existem maneiras de contornar esta situação (isto é, incluir e fazer o commit) que vamos falar depois. Por enquanto, você fez o commit de todas as suas modificações, então você pode mudar para o seu branch master:
+
+$ git checkout master
+Switched to branch "master"
+Nesse ponto, o diretório do seu projeto está exatamente do jeito que estava antes de você começar a trabalhar na tarefa #53, e você se concentra na correção do erro. É importante lembrar desse ponto: Git restabelece seu diretório de trabalho para ficar igual ao snapshot do commit que o branch que você criou aponta. Ele adiciona, remove, e modifica arquivos automaticamente para garantir que sua cópia é o que o branch parecia no seu último commit nele.
+
+Em seguida, você tem uma correção para fazer. Vamos criar um branch para a correção (hotfix) para trabalhar até a conclusão (veja Figura 3-13):
+
+$ git checkout -b 'hotfix'
+Switched to a new branch "hotfix"
+$ vim index.html
+$ git commit -a -m 'consertei o endereço de email'
+[hotfix]: created 3a0874c: "consertei o endereço de email"
+ 1 files changed, 0 insertions(+), 1 deletions(-)
