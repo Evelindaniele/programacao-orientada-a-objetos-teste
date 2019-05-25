@@ -8,14 +8,14 @@ if(numero_secreto==chute_inteiro):
 
   print("voce acertou")
 
-elif:(chute_inteiro<numero_secreto):
+elif(chute_inteiro<numero_secreto):
 
   print("Chute abaixo do numero secreto")
 
-elif:(chute_inteiro>numero_secreto):
+elif(chute_inteiro>numero_secreto):
 
   print("Chute acima do numero secreto")
 
-else 
+else: 
 	
 	print(" Voce errou")
